@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <!-- La CSP arriva anche come header HTTP da Express; qui è una seconda difesa. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Video to MP3</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div id="app" class="app">
+    <header class="topbar">
+      <div class="brand">
+        <svg class="brand-icon" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l12-2v13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="18" r="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="16" r="3" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        <h1>Video to MP3</h1>
+      </div>
+      <nav class="topnav" aria-label="Informazioni">
+        <button type="button" class="btn btn-ghost" id="btn-about">Informazioni</button>
+        <button type="button" class="btn btn-ghost" id="btn-licenses">Licenze</button>
+      </nav>
+    </header>
+
+    <main class="content">
+      <div id="resource-banner" class="banner banner-error" role="alert" hidden>
+        <strong>Componenti mancanti.</strong>
+        <span id="resource-banner-text"></span>
+        <button type="button" class="btn btn-link" data-action="open-logs">Apri cartella log</button>
+      </div>
+
+      <!-- 1. Selezione del file -->
+      <section id="panel-select" class="card" aria-labelledby="select-title">
+        <h2 id="select-title" class="card-title">1. Scegli il video</h2>
+        <div id="dropzone" class="dropzone" data-state="idle">
+          <svg class="dropzone-icon" width="40" height="40" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0-4 4m4-4 4 4M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p class="dropzone-text" id="dropzone-text">Trascina qui un video</p>
+          <p class="dropzone-sub">oppure</p>
+          <button type="button" class="btn btn-secondary" id="btn-pick">Scegli un file…</button>
+          <p class="dropzone-formats" id="formats-text">MP4, MOV, MKV, AVI, WEBM, MPEG, MPG, M4V, FLV, WMV</p>
+        </div>
+
+        <div id="file-info" class="file-info" hidden>
+          <svg class="file-icon" width="32" height="32" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 10l4.55-2.28A1 1 0 0 1 21 8.62v6.76a1 1 0 0 1-1.45.9L15 14M5 18h8a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="file-meta">
+            <p class="file-name" id="file-name"></p>
+            <p class="file-size" id="file-size"></p>
+          </div>
+          <button type="button" class="btn btn-ghost" id="btn-remove" aria-label="Rimuovi il file selezionato">Rimuovi</button>
+        </div>
+      </section>
+
+      <!-- 2. Qualità -->
+      <!-- Nascosta finché app.js non riceve le opzioni dal server: niente riquadro vuoto. -->
+      <section id="panel-quality" class="card" aria-labelledby="quality-title" hidden>
+        <h2 id="quality-title" class="card-title">2. Scegli la qualità MP3</h2>
+        <fieldset class="quality-grid" id="quality-options">
+          <legend class="visually-hidden">Bitrate MP3</legend>
+          <!-- Opzioni generate da app.js a partire dalla configurazione del server -->
+        </fieldset>
+        <p class="note">Un bitrate più alto non migliora l'audio di una sorgente di bassa qualità: aumenta solo la dimensione del file.</p>
+      </section>
+
+      <!-- 3. Conversione -->
+      <section id="panel-convert" class="card" aria-labelledby="convert-title">
+        <h2 id="convert-title" class="card-title">3. Converti</h2>
+
+        <div id="action-start" class="actions">
+          <button type="button" class="btn btn-primary btn-large" id="btn-convert" disabled>Converti in MP3</button>
+        </div>
+
+        <div id="progress-area" class="progress-area" hidden>
+          <div class="progress-header">
+            <span id="status-label" class="status-label">In attesa</span>
+            <span id="progress-percent" class="progress-percent" aria-hidden="true">0%</span>
+          </div>
+          <progress id="progress-bar" max="100" value="0" aria-labelledby="status-label"></progress>
+          <p id="progress-detail" class="progress-detail"></p>
+          <div class="actions">
+            <button type="button" class="btn btn-secondary" id="btn-cancel">Annulla</button>
+          </div>
+        </div>
+
+        <div id="result-area" class="result" hidden>
+          <svg class="result-icon" width="36" height="36" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>
+            <p class="result-title" id="result-title">Conversione completata</p>
+            <p class="result-detail" id="result-detail"></p>
+          </div>
+          <div class="actions">
+            <button type="button" class="btn btn-primary" id="btn-save">Salva MP3</button>
+            <button type="button" class="btn btn-secondary" data-action="new">Nuova conversione</button>
+          </div>
+        </div>
+
+        <div id="error-area" class="error-box" role="alert" hidden>
+          <p class="error-title" id="error-title"></p>
+          <p class="error-hint" id="error-hint"></p>
+          <p class="error-logs">I dettagli tecnici sono salvati nei log dell'applicazione.</p>
+          <div class="actions">
+            <button type="button" class="btn btn-secondary" data-action="new">Nuova conversione</button>
+            <button type="button" class="btn btn-ghost" data-action="open-logs">Apri cartella log</button>
+            <button type="button" class="btn btn-ghost" data-action="copy-diagnostics">Copia diagnostica</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Annunci per gli screen reader -->
+      <div id="live-region" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+    </main>
+
+    <footer class="footer">
+      <p>Converti esclusivamente contenuti di tua proprietà o per i quali possiedi i diritti e le autorizzazioni necessarie.</p>
+      <p>Funziona completamente offline. Nessun dato lascia il tuo computer.</p>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast" role="status" hidden></div>
+
+  <dialog id="dialog-about" class="dialog" aria-labelledby="about-title">
+    <div class="dialog-header">
+      <h2 id="about-title">Informazioni</h2>
+      <button type="button" class="btn btn-ghost" data-close>Chiudi</button>
+    </div>
+    <div class="dialog-body" id="about-body">
+      <p>Caricamento…</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn btn-ghost" data-action="open-logs">Apri cartella log</button>
+      <button type="button" class="btn btn-ghost" data-action="copy-diagnostics">Copia diagnostica</button>
+    </div>
+  </dialog>
+
+  <dialog id="dialog-licenses" class="dialog dialog-wide" aria-labelledby="licenses-title">
+    <div class="dialog-header">
+      <h2 id="licenses-title">Licenze di terze parti</h2>
+      <button type="button" class="btn btn-ghost" data-close>Chiudi</button>
+    </div>
+    <div class="dialog-body">
+      <div class="tabs" role="tablist" id="license-tabs"></div>
+      <pre class="license-text" id="license-text" tabindex="0">Caricamento…</pre>
+    </div>
+  </dialog>
+</body>
+</html>

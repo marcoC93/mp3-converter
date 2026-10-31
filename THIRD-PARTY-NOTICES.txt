@@ -1,0 +1,82 @@
+VIDEO TO MP3 — AVVISI DI TERZE PARTI (THIRD-PARTY NOTICES)
+===========================================================
+
+Questa documentazione non costituisce consulenza legale. Prima della
+distribuzione pubblica o commerciale, verificare licenze, codec, brevetti e
+obblighi applicabili.
+
+Converti esclusivamente contenuti di tua proprietà o per i quali possiedi i
+diritti e le autorizzazioni necessarie.
+
+Il pacchetto installabile di Video to MP3 è composto da due programmi:
+
+  1. l'applicazione Electron (interfaccia, server locale): licenza MIT;
+  2. il convertitore (Python + PyAV + librerie FFmpeg e codec): distribuito
+     sotto GNU GPL versione 3 o successiva (GPL-3.0-or-later), perché include
+     componenti GPL (x264, x265).
+
+I due programmi comunicano solo tramite riga di comando e pipe.
+
+TESTI INTEGRALI DELLE LICENZE E SORGENTE CORRISPONDENTE del convertitore sono
+inclusi nel pacchetto, nella cartella:
+
+    resources/third-party/<piattaforma>-<arch>/
+        LICENSES.txt   testi integrali di tutte le licenze, estratti dai sorgenti originali
+        SOURCES.md     elenco dei sorgenti (URL, SHA-256) e istruzioni per ricostruire
+        source/        archivi dei sorgenti e sorgente del convertitore
+
+e sono consultabili dall'app in "Licenze" -> "Convertitore" e "Sorgente corrispondente".
+Electron/Chromium: file LICENSE e LICENSES.chromium.html accanto all'eseguibile.
+
+-------------------------------------------------------------------------------
+1. Componenti del convertitore (PyAV 19.0.2, librerie da pyav-ffmpeg 9.0.2-1)
+-------------------------------------------------------------------------------
+Elenco verificato per Windows x64 confrontando le librerie realmente incluse
+con il manifesto third-party/pyav-19.0.2.json. Per le altre piattaforme
+l'elenco va verificato prima della distribuzione (vedi docs/LICENSE_COMPLIANCE.md).
+
+  PyAV 19.0.2 ............... BSD-3-Clause        https://github.com/PyAV-Org/PyAV
+  FFmpeg 9.0.2 .............. LGPL-3.0-or-later   https://ffmpeg.org/  (legale: https://ffmpeg.org/legal.html)
+  LAME (bwlame 3.101.0,
+    encoder libmp3lame) ..... LGPL-2.1            https://github.com/basswood-io/bwlame
+  x264 (b35605ac) ........... GPL-2.0-or-later    https://www.videolan.org/developers/x264.html
+  x265 4.3 .................. GPL-2.0-or-later    https://bitbucket.org/multicoreware/x265_git
+  Opus 1.6.1 ................ BSD-3-Clause        https://opus-codec.org/
+  dav1d 1.5.4 ............... BSD-2-Clause        https://code.videolan.org/videolan/dav1d
+  SVT-AV1 4.2.0 ............. BSD-3-Clause-Clear + AOM Patent License 1.0
+  libvpx 1.17.0 ............. BSD-3-Clause        https://www.webmproject.org/
+  libwebp 1.6.0 ............. BSD-3-Clause        https://developers.google.com/speed/webp
+  libpng 1.6.58 ............. Libpng-2.0          http://www.libpng.org/
+  libvmaf 3.2.1 ............. BSD-2-Clause-Patent https://github.com/Netflix/vmaf
+  Intel VPL 2.16.0 .......... MIT                 https://github.com/intel/libvpl
+  nv-codec-headers n13.0.19.0 MIT (solo header)
+  AMD AMF headers 1.5.2 ..... MIT (solo header)
+  GNU libiconv 1.19 ......... LGPL-2.1-or-later   (DLL della toolchain MinGW-w64, Windows)
+  zlib ...................... Zlib                (DLL della toolchain MinGW-w64, Windows)
+  winpthreads ............... MIT AND BSD-3-Clause (MinGW-w64, Windows)
+  libgcc_s, libstdc++ ....... GPL-3.0-or-later WITH GCC-exception-3.1 (Windows)
+  Python 3.14 ............... PSF-2.0             https://www.python.org/
+  PyInstaller (bootloader) .. GPL-2.0-or-later con eccezione per il bootloader
+
+Licenza dichiarata da FFmpeg: "LGPL version 3 or later". La combinazione
+distribuita include x264 e x265 (GPL-2.0-or-later) ed è quindi trattata come
+GPL-3.0-or-later.
+
+FFmpeg è un marchio di Fabrice Bellard, creatore del progetto FFmpeg.
+
+-------------------------------------------------------------------------------
+2. Electron
+-------------------------------------------------------------------------------
+Progetto:   https://www.electronjs.org/
+Licenza:    MIT
+Include:    Chromium (licenze BSD e molte altre: vedi LICENSES.chromium.html
+            distribuito con l'applicazione) e Node.js (MIT, con componenti
+            di terze parti elencati in https://github.com/nodejs/node/blob/main/LICENSE).
+
+-------------------------------------------------------------------------------
+3. Express e dipendenze npm di produzione
+-------------------------------------------------------------------------------
+Progetto:   https://expressjs.com/
+Licenza:    MIT
+Elenco completo delle dipendenze e licenze: npm-licenses.txt
+(generato con "npm run licenses:npm").

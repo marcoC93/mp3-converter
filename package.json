@@ -1,0 +1,51 @@
+{
+  "name": "video-to-mp3-desktop",
+  "productName": "Video to MP3",
+  "version": "1.0.0",
+  "description": "Applicazione desktop offline per convertire video in MP3 (Electron + Express + Python/PyAV).",
+  "main": "src/main/main.js",
+  "private": true,
+  "license": "MIT",
+  "author": {
+    "name": "Video to MP3 Desktop contributors",
+    "email": "noreply@example.invalid"
+  },
+  "homepage": "https://example.invalid/video-to-mp3-desktop",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "dev": "electron .",
+    "dev:debug": "electron . --debug-logging",
+    "smoke": "electron . --smoke-test",
+    "test": "npm run test:node && npm run test:python",
+    "test:node": "node --test --test-reporter=spec \"tests/unit/*.test.js\" \"tests/integration/*.test.js\"",
+    "test:unit": "node --test --test-reporter=spec \"tests/unit/*.test.js\"",
+    "test:integration": "node --test --test-reporter=spec \"tests/integration/*.test.js\"",
+    "test:python": "node scripts/run-python.js -m unittest discover -s tests/python -v",
+    "check": "node scripts/check.js",
+    "verify:converter": "node scripts/verify-converter.js",
+    "build:python": "node scripts/build-python.js",
+    "build:python:debug": "node scripts/build-python.js --debug",
+    "prepare:resources": "node scripts/prepare-resources.js",
+    "licenses:npm": "node scripts/generate-npm-licenses.js",
+    "third-party": "node scripts/prepare-third-party.js",
+    "package": "node scripts/prepare-resources.js && electron-builder --config electron-builder.config.js --dir --publish never",
+    "make": "node scripts/prepare-resources.js && electron-builder --config electron-builder.config.js --publish never",
+    "make:win": "node scripts/prepare-resources.js --platform win32 --arch x64 && electron-builder --config electron-builder.config.js --win --x64 --publish never",
+    "make:win:arm64": "node scripts/prepare-resources.js --platform win32 --arch arm64 && electron-builder --config electron-builder.config.js --win --arm64 --publish never",
+    "make:mac": "node scripts/prepare-resources.js --platform darwin && electron-builder --config electron-builder.config.js --mac --publish never",
+    "make:mac:arm64": "node scripts/prepare-resources.js --platform darwin --arch arm64 && electron-builder --config electron-builder.config.js --mac --arm64 --publish never",
+    "make:mac:x64": "node scripts/prepare-resources.js --platform darwin --arch x64 && electron-builder --config electron-builder.config.js --mac --x64 --publish never",
+    "make:linux": "node scripts/prepare-resources.js --platform linux --arch x64 && electron-builder --config electron-builder.config.js --linux --x64 --publish never",
+    "make:linux:arm64": "node scripts/prepare-resources.js --platform linux --arch arm64 && electron-builder --config electron-builder.config.js --linux --arm64 --publish never",
+    "clean": "node scripts/clean.js"
+  },
+  "dependencies": {
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "electron": "^45.1.0",
+    "electron-builder": "^26.18.0"
+  }
+}

@@ -1,0 +1,4 @@
+# Dipendenze necessarie per creare l'eseguibile standalone.
+# Include quelle di runtime: PyInstaller deve trovarle installate per copiarle nell'eseguibile.
+-r requirements.txt
+pyinstaller==6.22.3

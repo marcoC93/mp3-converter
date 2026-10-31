@@ -1,0 +1,37 @@
+# Dipendenze e ambienti locali
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+
+# Artefatti di build e pacchetti
+build/
+out/
+dist/
+resources/python-converter/*/
+
+# Certificati e segreti: MAI nel repository (vedi docs/CODE_SIGNING.md)
+*.p12
+*.pfx
+*.cer
+*.pem
+*.key
+*.provisionprofile
+.env
+.env.*
+
+# Generati
+resources/licenses/npm-licenses.txt
+
+# Sistema / editor
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+
+# Impostazioni locali e personali di Claude Code (permessi della macchina)
+.claude/settings.local.json
+
+# Licenze integrali e sorgenti dei componenti del convertitore (generati: npm run third-party)
+resources/third-party/*/

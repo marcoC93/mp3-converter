@@ -1,0 +1,10 @@
+# Fine riga coerenti su Windows, macOS e Linux.
+# Nel repository i file di testo sono sempre LF; gli script shell DEVONO restare LF
+# anche su Windows, altrimenti bash su macOS/Linux fallisce ("\r: command not found").
+* text=auto eol=lf
+*.sh text eol=lf
+*.ps1 text eol=crlf
+
+*.png binary
+*.ico binary
+*.icns binary

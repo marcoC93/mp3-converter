@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Entitlements per l'hardened runtime di macOS (necessario per la notarizzazione).
+  - allow-jit / allow-unsigned-executable-memory: richiesti dal motore V8 di Electron.
+  - disable-library-validation: consente al convertitore PyInstaller di caricare
+    le proprie librerie Python incluse nel pacchetto.
+  Rivedere questo file a ogni aggiornamento di Electron o PyInstaller.
+-->
+<plist version="1.0">
+<dict>
+  <key>com.apple.security.cs.allow-jit</key>
+  <true/>
+  <key>com.apple.security.cs.allow-unsigned-executable-memory</key>
+  <true/>
+  <key>com.apple.security.cs.disable-library-validation</key>
+  <true/>
+</dict>
+</plist>

@@ -1,0 +1,7 @@
+# Dipendenze di RUNTIME del convertitore (incluse nell'eseguibile da PyInstaller).
+#
+# av (PyAV): binding Python delle librerie FFmpeg. I wheel ufficiali contengono
+# già le librerie FFmpeg compilate (con l'encoder MP3 libmp3lame): non servono
+# binari ffmpeg/ffprobe separati. Versione fissata per build riproducibili;
+# a ogni aggiornamento rivedere la licenza (docs/LICENSE_COMPLIANCE.md).
+av==19.0.2

@@ -1,0 +1,286 @@
+{
+  "_descrizione": "Componenti di terze parti contenuti nel convertitore con PyAV 19.0.2: sorgenti corrispondenti (URL + SHA-256) e licenze. Fonte: PyAV v19.0.2 (scripts/ffmpeg-latest.json -> pyav-ffmpeg 9.0.2-1) e pyav-ffmpeg 9.0.2-1 (scripts/pkg.py, scripts/build-ffmpeg.py). Aggiornare questo file a OGNI cambio di versione di PyAV: vedi docs/LICENSE_COMPLIANCE.md.",
+  "pyav": "19.0.2",
+  "ffmpegBuild": "pyav-ffmpeg 9.0.2-1",
+  "verifiedPlatforms": ["win32-x64"],
+  "_verifiedPlatforms": "Piattaforme per cui l'elenco delle librerie è stato confrontato con il wheel reale. Per le altre lo script si ferma finché qualcuno non verifica e aggiunge la piattaforma.",
+  "components": [
+    {
+      "id": "pyav",
+      "name": "PyAV",
+      "version": "19.0.2",
+      "license": "BSD-3-Clause",
+      "url": "https://files.pythonhosted.org/packages/23/01/76b6bf563fe907597cf58f10d10168e93fe588b6db9f2658db87e87efa7e/av-19.0.2.tar.gz",
+      "sha256": "bebbc52598886480f4d861c575dc2b020785d6c04e1308680ddcc545e1b94c66",
+      "platforms": "all"
+    },
+    {
+      "id": "pyav-build-scripts",
+      "name": "PyAV - script di build dei wheel (tag v19.0.2)",
+      "version": "v19.0.2",
+      "license": "BSD-3-Clause",
+      "url": "https://github.com/PyAV-Org/PyAV/archive/refs/tags/v19.0.2.tar.gz",
+      "filename": "PyAV-v19.0.2.tar.gz",
+      "sha256": "fb20cdc67b0913a4c15b41281782ca176614d0283c8105b8a642c59dc6732949",
+      "platforms": "all",
+      "licenseFromArchive": false
+    },
+    {
+      "id": "pyav-ffmpeg",
+      "name": "pyav-ffmpeg - configurazione, patch e script di build di FFmpeg e codec (tag 9.0.2-1)",
+      "version": "9.0.2-1",
+      "license": "nessun file di licenza nel repository (incluso come documentazione di configurazione e patch della build)",
+      "licenseFromArchive": false,
+      "url": "https://github.com/PyAV-Org/pyav-ffmpeg/archive/refs/tags/9.0.2-1.tar.gz",
+      "filename": "pyav-ffmpeg-9.0.2-1.tar.gz",
+      "sha256": "f1d1cce5b20eba71675c1c5efdd90105f79223d40abcad2cd12a0735a0379c2e",
+      "platforms": "all"
+    },
+    {
+      "id": "ffmpeg",
+      "name": "FFmpeg",
+      "version": "9.0.2",
+      "license": "LGPL-3.0-or-later (configurazione --enable-version3; combinato con x264/x265 GPL)",
+      "url": "https://ffmpeg.org/releases/ffmpeg-9.0.2.tar.xz",
+      "sha256": "8c3850283eb25fa026482078a04051e0be17347b09ef81a0849bec15a96e002e",
+      "platforms": "all"
+    },
+    {
+      "id": "lamer",
+      "name": "lamer (LAME, encoder MP3 libmp3lame)",
+      "version": "3.101.0",
+      "license": "LGPL-2.1 (file LICENSE del repository)",
+      "url": "https://github.com/basswood-io/bwlame/archive/refs/tags/v3.101.0.tar.gz",
+      "filename": "bwlame-3.101.0.tar.gz",
+      "sha256": "506d8a6e855f59151a5407d848557f9ac10acad6ff61718c7b0b3441221bfe72",
+      "originalUrl": "https://github.com/basswood-io/lamer/archive/refs/tags/v3.101.0.tar.gz",
+      "originalSha256": "81839b16fdc401e20b73389d05f32a7656008f43bcb960feff290d6f08fc109e",
+      "_verifica": "Il repository 'lamer' è stato rinominato 'bwlame': GitHub ora genera l'archivio con la cartella radice 'bwlame-3.101.0/' e quindi con un hash diverso da quello registrato da pyav-ffmpeg. Verifica eseguita il 2026-10-30: il tag v3.101.0 punta al commit 3ffd14f5531e0e5078e31eba4b2fb6ccc277b843 (09/07/2026, precedente alla release pyav-ffmpeg 9.0.2-1 del 19/09/2026) e tutti gli 82 file dell'archivio hanno lo stesso hash git dei file del commit (albero 7298edd36b1678ba9909fc1ec20ca52fc21fe0b7).",
+      "platforms": "all"
+    },
+    {
+      "id": "x264",
+      "name": "x264",
+      "version": "b35605ace3ddf7c1a5d67a2eb553f034aef41d55",
+      "license": "GPL-2.0-or-later",
+      "url": "https://code.videolan.org/videolan/x264/-/archive/b35605ace3ddf7c1a5d67a2eb553f034aef41d55/x264-b35605ace3ddf7c1a5d67a2eb553f034aef41d55.tar.bz2",
+      "sha256": "6eeb82934e69fd51e043bd8c5b0d152839638d1ce7aa4eea65a3fedcf83ff224",
+      "platforms": "all"
+    },
+    {
+      "id": "x265",
+      "name": "x265",
+      "version": "4.3",
+      "license": "GPL-2.0-or-later",
+      "url": "https://github.com/Multicorewareinc/x265/releases/download/4.3/x265_4.3.tar.gz",
+      "sha256": "83c53e4c8bbb8f1e33ed59e10a7d621d1d7801ca853910c3eb41f038b8ffb121",
+      "platforms": "all"
+    },
+    {
+      "id": "opus",
+      "name": "Opus",
+      "version": "1.6.1",
+      "license": "BSD-3-Clause",
+      "url": "https://ftp.osuosl.org/pub/xiph/releases/opus/opus-1.6.1.tar.gz",
+      "sha256": "6ffcb593207be92584df15b32466ed64bbec99109f007c82205f0194572411a1",
+      "platforms": "all"
+    },
+    {
+      "id": "dav1d",
+      "name": "dav1d",
+      "version": "1.5.4",
+      "license": "BSD-2-Clause",
+      "url": "https://code.videolan.org/videolan/dav1d/-/archive/1.5.4/dav1d-1.5.4.tar.bz2",
+      "sha256": "2abfb0c89212e6e4733a54e0ae509ec00a5b845a6360946f918806e14aedb011",
+      "platforms": "all"
+    },
+    {
+      "id": "libsvtav1",
+      "name": "SVT-AV1",
+      "version": "4.2.0",
+      "license": "BSD-3-Clause-Clear (+ Alliance for Open Media Patent License 1.0)",
+      "url": "https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v4.2.0/SVT-AV1-v4.2.0.tar.bz2",
+      "sha256": "512f2ea5649e3e76c2dddcc25c2556fb67a9582baaab207c9c96161c94659dad",
+      "platforms": "all"
+    },
+    {
+      "id": "vpx",
+      "name": "libvpx",
+      "version": "1.17.0",
+      "license": "BSD-3-Clause",
+      "url": "https://github.com/webmproject/libvpx/archive/refs/tags/v1.17.0.tar.gz",
+      "filename": "vpx-1.17.0.tar.gz",
+      "sha256": "1020f184046187baa2985dbde38e0691f49c44088bca7a1842b0236c6081dc0a",
+      "platforms": "all"
+    },
+    {
+      "id": "png",
+      "name": "libpng",
+      "version": "1.6.58",
+      "license": "Libpng-2.0",
+      "url": "https://downloads.sourceforge.net/project/libpng/libpng16/1.6.58/libpng-1.6.58.tar.xz",
+      "sha256": "28eb403f51f0f7405249132cecfe82ea5c0ef97f1b32c5a65828814ae0d34775",
+      "platforms": "all"
+    },
+    {
+      "id": "webp",
+      "name": "libwebp",
+      "version": "1.6.0",
+      "license": "BSD-3-Clause",
+      "url": "https://github.com/webmproject/libwebp/archive/refs/tags/v1.6.0.tar.gz",
+      "filename": "webp-1.6.0.tar.gz",
+      "sha256": "93a852c2b3efafee3723efd4636de855b46f9fe1efddd607e1f42f60fc8f2136",
+      "platforms": "all"
+    },
+    {
+      "id": "libvmaf",
+      "name": "libvmaf (VMAF)",
+      "version": "3.2.1",
+      "license": "BSD-2-Clause-Patent",
+      "url": "https://github.com/Netflix/vmaf/archive/refs/tags/v3.2.1.tar.gz",
+      "filename": "vmaf-3.2.1.tar.gz",
+      "sha256": "5df7386911bc15fd1ca783132528748d219768ae4fc5f8e0b61184f041648092",
+      "platforms": "all"
+    },
+    {
+      "id": "nv-codec-headers",
+      "name": "nv-codec-headers (solo header)",
+      "version": "n13.0.19.0",
+      "license": "MIT",
+      "url": "https://github.com/FFmpeg/nv-codec-headers/archive/refs/tags/n13.0.19.0.tar.gz",
+      "filename": "nv-codec-headers-n13.0.19.0.tar.gz",
+      "licenseHeaderPattern": "^[^/]+/include/ffnvcodec/[^/]+\\.h$",
+      "_licenseHeaderPattern": "Il progetto non ha un file LICENSE: la licenza MIT è nel commento iniziale di ogni header.",
+      "sha256": "86d15d1a7c0ac73a0eafdfc57bebfeba7da8264595bf531cf4d8db1c22940116",
+      "platforms": ["win32-x64", "linux-x64"]
+    },
+    {
+      "id": "amf-headers",
+      "name": "AMD AMF (solo header)",
+      "version": "1.5.2",
+      "license": "MIT",
+      "url": "https://github.com/GPUOpen-LibrariesAndSDKs/AMF/releases/download/v1.5.2/AMF-headers-v1.5.2.tar.gz",
+      "licenseHeaderPattern": "^[^/]+/AMF/.+\\.h$",
+      "_licenseHeaderPattern": "L'archivio contiene solo header: la licenza MIT (con l'avviso AMD sugli standard) è nel commento iniziale di ogni file.",
+      "sha256": "d3c12eb324edf05e214608b6a395a51dd95770ed9d45520185d6c3a206811c99",
+      "platforms": ["win32-x64", "linux-x64"]
+    },
+    {
+      "id": "libvpl",
+      "name": "Intel VPL",
+      "version": "2.16.0",
+      "license": "MIT",
+      "url": "https://github.com/intel/libvpl/archive/refs/tags/v2.16.0.tar.gz",
+      "filename": "libvpl-2.16.0.tar.gz",
+      "sha256": "d60931937426130ddad9f1975c010543f0da99e67edb1c6070656b7947f633b6",
+      "platforms": ["win32-x64", "linux-x64"]
+    },
+    {
+      "id": "libiconv",
+      "name": "GNU libiconv (DLL della toolchain MinGW-w64)",
+      "version": "1.19",
+      "license": "LGPL-2.1-or-later",
+      "url": "https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.19.tar.gz",
+      "sha256": "88dd96a8c0464eca144fc791ae60cd31cd8ee78321e67397e25fc095c4a19aa6",
+      "_sha256": "Calcolato al primo download (GNU non pubblica SHA-256 nella pagina); versione letta dalle informazioni della DLL libiconv-2.dll.",
+      "platforms": ["win32-x64", "win32-arm64"]
+    },
+    {
+      "id": "zlib",
+      "name": "zlib (DLL della toolchain MinGW-w64)",
+      "version": "toolchain MinGW-w64",
+      "license": "Zlib",
+      "licenseOnly": true,
+      "_licenseOnly": "Licenza permissiva: nessun obbligo di fornire il sorgente; si include il testo della licenza.",
+      "url": "https://raw.githubusercontent.com/madler/zlib/v1.3.1/LICENSE",
+      "filename": "zlib-LICENSE.txt",
+      "sha256": "845efc77857d485d91fb3e0b884aaa929368c717ae8186b66fe1ed2495753243",
+      "platforms": ["win32-x64", "win32-arm64"]
+    },
+    {
+      "id": "winpthreads",
+      "name": "winpthreads (MinGW-w64)",
+      "version": "toolchain MinGW-w64",
+      "license": "MIT AND BSD-3-Clause",
+      "licenseOnly": true,
+      "url": "https://raw.githubusercontent.com/mingw-w64/mingw-w64/v13.0.0/mingw-w64-libraries/winpthreads/COPYING",
+      "filename": "winpthreads-COPYING.txt",
+      "sha256": "63263614cdd29f2f93cba85e992f041b31f9fc7b4033692f31269489a8a1b177",
+      "platforms": ["win32-x64", "win32-arm64"]
+    },
+    {
+      "id": "gcc-runtime",
+      "name": "GCC runtime (libgcc_s, libstdc++) della toolchain MinGW-w64",
+      "version": "toolchain MinGW-w64",
+      "license": "GPL-3.0-or-later WITH GCC-exception-3.1",
+      "licenseOnly": true,
+      "_licenseOnly": "La GCC Runtime Library Exception consente di distribuire le librerie runtime senza gli obblighi della GPL; si include il testo dell'eccezione (il testo GPL-3.0 è già incluso con FFmpeg).",
+      "url": "https://raw.githubusercontent.com/gcc-mirror/gcc/releases/gcc-15.1.0/COPYING.RUNTIME",
+      "filename": "gcc-COPYING.RUNTIME.txt",
+      "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74",
+      "platforms": ["win32-x64"]
+    },
+    {
+      "id": "alsa-lib",
+      "name": "alsa-lib",
+      "version": "1.2.14",
+      "license": "LGPL-2.1-or-later",
+      "url": "https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.14.tar.bz2",
+      "sha256": "be9c88a0b3604367dd74167a2b754a35e142f670292ae47a2fdef27a2ee97a32",
+      "platforms": ["linux-x64", "linux-arm64"]
+    },
+    {
+      "id": "gmp",
+      "name": "GNU MP",
+      "version": "6.3.0",
+      "license": "LGPL-3.0-or-later OR GPL-2.0-or-later",
+      "url": "https://ftp.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz",
+      "sha256": "a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898",
+      "platforms": ["linux-x64", "linux-arm64"]
+    },
+    {
+      "id": "unistring",
+      "name": "GNU libunistring",
+      "version": "1.4.2",
+      "license": "LGPL-3.0-or-later OR GPL-2.0-or-later",
+      "url": "https://ftp.gnu.org/gnu/libunistring/libunistring-1.4.2.tar.gz",
+      "sha256": "e82664b170064e62331962126b259d452d53b227bb4a93ab20040d846fec01d8",
+      "platforms": ["linux-x64", "linux-arm64"]
+    },
+    {
+      "id": "nettle",
+      "name": "Nettle",
+      "version": "4.0",
+      "license": "LGPL-3.0-or-later OR GPL-2.0-or-later",
+      "url": "https://ftp.gnu.org/gnu/nettle/nettle-4.0.tar.gz",
+      "sha256": "3addbc00da01846b232fb3bc453538ea5468da43033f21bb345cb1e9073f5094",
+      "platforms": ["linux-x64", "linux-arm64"]
+    },
+    {
+      "id": "gnutls",
+      "name": "GnuTLS",
+      "version": "3.8.13",
+      "license": "LGPL-2.1-or-later",
+      "url": "https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.13.tar.xz",
+      "sha256": "ffed8ec1bf09c2426d4f14aae377de4753b53e537d685e604e99a8b16ca9c97e",
+      "platforms": ["linux-x64", "linux-arm64"]
+    }
+  ],
+  "libraryMap": {
+    "_descrizione": "Ogni libreria trovata nel convertitore compilato (cartella av.libs) deve corrispondere a un componente. Una libreria non censita blocca la generazione: significa che il wheel contiene qualcosa di nuovo da documentare.",
+    "^(avcodec|avdevice|avfilter|avformat|avutil|swresample|swscale)-": "ffmpeg",
+    "^libdav1d": "dav1d",
+    "^libopus": "opus",
+    "^lib(sharpyuv|webp|webpmux|webpdemux)": "webp",
+    "^libSvtAv1Enc": "libsvtav1",
+    "^libvmaf": "libvmaf",
+    "^libvpl": "libvpl",
+    "^libvpx": "vpx",
+    "^libx264": "x264",
+    "^libx265": "x265",
+    "^libiconv": "libiconv",
+    "^zlib1": "zlib",
+    "^libwinpthread": "winpthreads",
+    "^(libgcc_s|libstdc\\+\\+)": "gcc-runtime"
+  }
+}
